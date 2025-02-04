@@ -1,1 +1,3 @@
 # TradeScape
+
+Navigating Markets.
