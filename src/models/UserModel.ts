@@ -17,6 +17,10 @@ class UserModel {
     const [newUser] = await db<User>('users').insert(user).returning('*');
     return newUser;
   }
+
+  public async updatePassword(userId: string, newPasswordHash: string): Promise<void> {
+    await db('users').where({ id: userId }).update({ password_hash: newPasswordHash });
+  }
 }
 
 export default new UserModel();

@@ -10,6 +10,10 @@ const router = Router();
 router.post("/register", AuthController.register.bind(AuthController));
 router.post("/login", AuthController.login.bind(AuthController));
 router.post("/profile", authenticateToken, AuthController.getProfile.bind(AuthController));
+router.post("/logout", authenticateToken, AuthController.logout.bind(AuthController));
+router.post('/password-reset-request', AuthController.requestPasswordReset.bind(AuthController));
+router.post('/password-reset', AuthController.resetPassword.bind(AuthController));
+
 
 router.post("/register", UserController.registerUser.bind(UserController));
 

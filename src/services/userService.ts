@@ -63,6 +63,10 @@ class UserService {
     const isMatch = await bcrypt.compare(password, user.password_hash === undefined ? "" : user.password_hash);
     return isMatch ? user : null;
   }
+
+  public async updatePassword(userId: string, newPasswordHash: string): Promise<void> {
+    await UserModel.updatePassword(userId, newPasswordHash)
+  }
 }
 
 export default new UserService();
