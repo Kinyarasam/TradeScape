@@ -1,5 +1,5 @@
 export interface Trade {
-  id: number;
+  id: string;
   currencyPair: string;
   entryPrice: number;
   exitPrice?: number;

@@ -7,7 +7,7 @@ class UserService {
    * Get a user by their ID
    * @param userId - The user's ID
    */
-  public async getUserById(userId: number): Promise<User | null> {
+  public async getUserById(userId: string): Promise<User | null> {
     return await UserModel.getUserById(userId);
   }
 
@@ -58,7 +58,7 @@ class UserService {
     if (!user) {
       return null;
     }
-    
+
     // Compare the hashed password
     const isMatch = await bcrypt.compare(password, user.password_hash === undefined ? "" : user.password_hash);
     return isMatch ? user : null;

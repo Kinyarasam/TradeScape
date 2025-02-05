@@ -3,7 +3,7 @@ import jwt from 'jsonwebtoken';
 
 interface Request extends ExpressRequest {
   user?: {
-    userId: number;
+    userId: string;
   };
 }
 
@@ -16,7 +16,7 @@ export function authenticateToken(req: Request, res: Response, next: NextFunctio
     }
 
     try {
-        const payload = jwt.verify(token, process.env.JWT_SECRET || 'default_secret') as { userId: number };
+        const payload = jwt.verify(token, process.env.JWT_SECRET || 'default_secret') as { userId: string };
         req.user = payload;
         next();
     } catch (error) {

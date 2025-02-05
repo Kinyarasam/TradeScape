@@ -2,9 +2,11 @@
  * @param { import("knex").Knex } knex
  * @returns { Promise<void> }
  */
-exports.up = function(knex) {
+exports.up = async function(knex) {
+  await knex.raw('CREATE EXTENSION IF NOT EXISTS "uuid-ossp"');
+
   return knex.schema.createTable('trades', (table) => {
-    table.increments('id').primary();
+    table.uuid('id').primary().defaultTo(knex.raw('uuid_generate_v4()'));
     table.string('currency_pair', 10).notNullable();
     table.decimal('entry_price', 14, 2).notNullable();
     table.decimal('exit_price', 14, 2);

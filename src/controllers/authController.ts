@@ -4,7 +4,7 @@ import jwt from 'jsonwebtoken';
 
 interface Request extends ExpressRequest {
   user?: {
-    userId: number;
+    userId: string;
   };
 }
 

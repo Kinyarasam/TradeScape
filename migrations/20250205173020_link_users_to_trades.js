@@ -4,7 +4,7 @@
  */
 exports.up = function(knex) {
   return knex.schema.table('trades', (table) => {
-    table.integer('user_id').unsigned().notNullable();
+    table.uuid('user_id').unsigned().notNullable();
 
     table.foreign('user_id').references('id').inTable('users').onDelete('CASCADE');
   });

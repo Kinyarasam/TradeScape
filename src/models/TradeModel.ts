@@ -11,7 +11,7 @@ class TradeModel {
     return newTrade;
   }
 
-  public async update(id: number, updates: Partial<Trade>): Promise<Trade | null> {
+  public async update(id: string, updates: Partial<Trade>): Promise<Trade | null> {
     const [updatedTrade] = await db<Trade>('trades').where({ id }).update(updates).returning('*');
     return updatedTrade || null;
   }
