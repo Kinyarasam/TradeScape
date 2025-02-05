@@ -5,7 +5,11 @@
   "main": "index.js",
   "scripts": {
     "start": "tsc && node dist/index.js",
-    "dev": "nodemon src/index.ts"
+    "dev": "nodemon src/index.ts",
+    "migrate:create": "pnpx knex migrate:make",
+    "migrate:latest": "pnpx knex migrate:latest",
+    "migrate:rollback": "pnpx knex migrate:rollback",
+    "migrate:reset": "pnpx knex migrate:rollback --all && npm run migrate:latest"
   },
   "keywords": [],
   "author": "",
