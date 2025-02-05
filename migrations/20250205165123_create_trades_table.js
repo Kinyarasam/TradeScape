@@ -10,7 +10,7 @@ exports.up = function(knex) {
     table.decimal('exit_price', 14, 2);
     table.enum('status', ['open', 'closed', 'pending']).notNullable();
     table.timestamp('created_at').defaultTo(knex.fn.now());
-    table.timestamp('updated_at').defaultTo(knex.fn.now());
+    table.timestamp('updated_at').defaultTo(knex.fn.now());  
   });
 };
 

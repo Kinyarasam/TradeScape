@@ -1,7 +1,7 @@
 import express, { Request, Response, NextFunction } from 'express';
 import dotenv from 'dotenv';
 import db from './db/db'; // Import the Knex database instance
-import tradeRoutes from './routes/tradeRoutes'; // Import trade routes
+import appRouter from './routes/index'; // Import trade routes
 
 // Load environment variables
 dotenv.config();
@@ -25,7 +25,7 @@ app.get('/health', async (req: Request, res: Response) => {
 });
 
 // Use trade-related routes
-app.use('/api/trades', tradeRoutes);
+app.use('/api/v1', appRouter);
 
 // Simple route for testing
 app.get('/', (req: Request, res: Response) => {
@@ -34,8 +34,8 @@ app.get('/', (req: Request, res: Response) => {
 
 // Handle errors
 app.use((err: Error, req: Request, res: Response, next: NextFunction) => {
-    console.error('Error:', err.message);
-    res.status(500).json({ error: 'Something went wrong!' });
+  console.error('Error:', err.message);
+  res.status(500).json({ error: 'Something went wrong!' });
 });
 
 // Start the server

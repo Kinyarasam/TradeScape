@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { getAllTrades, createTrade } from '../services/tradeService';
-import { logError } from '../utils/logError';
 
 class TradeController {
   // Fetch all trades
@@ -10,7 +9,6 @@ class TradeController {
       console.log(trades)
       res.json(trades);
     } catch (error) {
-      logError('Error fetching trades', error);
       next(error);
     }
   }
@@ -29,7 +27,6 @@ class TradeController {
       const newTrade = await createTrade({ currencyPair, entryPrice, status: 'open' });
       res.status(201).json(newTrade);
     } catch (error) {
-      logError("Error adding trade", error);
       next(error);
     }
   }
